@@ -8,7 +8,7 @@ compscore=0
 playscore=0
 option=['rock',"paper","scissors"]
 def game(uc):
-    global(compscore,playscore)
+    global compscore,playscore
     cc=random.choice(option)
     if uc==cc:
         title1.config(text="draw")
@@ -30,15 +30,19 @@ def game(uc):
     elif uc=="scissors" and cc=="rock":
         title1.config(text="computer wins")
         compscore+=1
+    playerselection.config(text="playerselection:"+uc )
+    computer.config(text="computer seletion:"+cc)
+    score.config(text="playscore:"+str(playscore))
+    core.config(text="compscore:"+str(compscore))
 rock=Label(screen, text="Rock Paper Scissors",bg="white",font=("arial",14))
 rock.place(x=200, y=100)
 title1=Label(screen, text="click to start",bg="white",font=("arial",14))
 title1.place(x=250, y= 150)
-rocky=Button(screen, text="Rock",bg="white",font=("arial",14))
+rocky=Button(screen, text="Rock",bg="white",font=("arial",14), command= lambda:game("rock"))
 rocky.place(x=100, y=200)
-paper=Button(screen, text="Paper",bg="white",font=("arial",14))
+paper=Button(screen, text="Paper",bg="white",font=("arial",14), command= lambda:game("paper"))
 paper.place(x=200, y=200)
-scissors=Button(screen, text="Sissors",bg="white",font=("arial",14))
+scissors=Button(screen, text="Sissors",bg="white",font=("arial",14), command= lambda:game("scissors"))
 scissors.place(x=300, y=200)
 sore=Label(screen, text="Score",bg="white",font=("arial",14))
 sore.place(x=100, y=300)
